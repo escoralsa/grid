@@ -1,0 +1,44 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@devices_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' 
+  
+  g.column name:  'Store', attribute: 'storeNumbre'  do |device|
+    device.storeNumbre
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |device|
+    device.name
+  end
+
+  g.column  name:  'IP Interna', attribute: 'intIp' do |device|
+    device.intIp
+  end
+  
+  g.column  name:  'IP Externa', attribute: 'extIp' do |device|
+    device.extIp
+  end
+  
+  g.column  name:  'Marca', attribute: 'brand' do |device|
+    device.brand
+  end
+  
+  g.column  name:  'Modelo', attribute: 'model' do |device|
+    device.model
+  end
+
+  g.column  name:  'Usuario', attribute: 'user' do |device|
+    device.user
+  end
+  
+  g.column  name:  'Contrasena', attribute: 'password' do |device|
+    device.password
+  end
+     
+  
+  g.column   do |device|
+    link_to('Edit', edit_device_path(device))
+  end
+end -%>
+
+<%= link_to 'Nuevo Dispositivo', new_device_path-%>

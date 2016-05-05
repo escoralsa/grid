@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Storenumbre:</strong>
+  <%= @appliance.storeNumbre %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @appliance.name %>
+</p>
+
+<p>
+  <strong>Intip:</strong>
+  <%= @appliance.intIp %>
+</p>
+
+<p>
+  <strong>Extip:</strong>
+  <%= @appliance.extIp %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @appliance.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @appliance.model %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @appliance.user %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @appliance.password %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @appliance.customer %>
+</p>
+
+<%= link_to 'Edit', edit_appliance_path(@appliance) %> |
+<%= link_to 'Back', appliances_path %>

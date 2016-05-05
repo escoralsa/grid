@@ -1,0 +1,21 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@categories_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' do |category|
+    category.id
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |category|
+    category.name
+  end
+
+  g.column  name:  'Descripcion', attribute: 'description' do |category|
+    category.description
+  end
+
+  g.column   do |category|
+    link_to('Edit', edit_category_path(category))
+  end
+end -%>
+
+<%= link_to 'New Categoria', new_category_path-%>

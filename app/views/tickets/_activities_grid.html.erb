@@ -1,0 +1,19 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@activities_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id'
+  
+  g.column name:  'Fecha', attribute: 'date'
+  
+  g.column  name:  'Ticket', attribute: 'id', assoc: :ticket
+     
+  g.column  name:  'Empleado', attribute: 'name', assoc: :employee
+  
+  g.column name:  'Notas', attribute: 'description'
+  
+  g.column   do |activity|
+    link_to('Edit', edit_activity_path(activity))
+  end
+end -%>
+
+<%= link_to 'Nueva Atencion', new_activity_path-%>

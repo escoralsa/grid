@@ -1,0 +1,29 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@customers_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' do |customer|
+    customer.id
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |customer|
+    customer.name
+  end
+
+  g.column  name:  'Direccion', attribute: 'adress' do |customer|
+    customer.adress
+  end
+  
+  g.column  name:  'Telefono', attribute: 'phone' do |customer|
+    customer.phone
+  end
+  
+  g.column  name:  'RFC', attribute: 'rfc' do |customer|
+    customer.rfc
+  end
+  g.column   do |customer|
+    link_to('Detalle', edit_customer_path(customer))
+  end
+  
+end -%>
+
+<%= link_to 'New Customer', new_customer_path-%>

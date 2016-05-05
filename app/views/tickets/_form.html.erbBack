@@ -1,0 +1,49 @@
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :contactName %><br>
+    <%= f.text_field :contactName %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name)) %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name)) %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_id %><br>
+    <%= f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name)) %>
+  </div>
+  <div class="field">
+    <%= f.label :situation_id %><br>
+    <%= f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name)) %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name)) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

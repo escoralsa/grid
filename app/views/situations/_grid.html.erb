@@ -1,0 +1,21 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@situations_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' do |situation|
+    situation.id
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |situation|
+    situation.name
+  end
+
+  g.column  name:  'Descripcion', attribute: 'description' do |situation|
+    situation.description
+  end
+
+  g.column   do |situation|
+    link_to('Edit', edit_situation_path(situation))
+  end
+end -%>
+
+<%= link_to 'Nuevo Estatus', new_situation_path-%>

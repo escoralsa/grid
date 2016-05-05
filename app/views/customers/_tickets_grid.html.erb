@@ -1,0 +1,27 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@tickets_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id'
+
+  g.column name:  'Fecha', attribute: 'date'
+
+  g.column  name:  'Cliente', attribute: 'name', assoc: :customer
+
+  g.column name:  'Contacto', attribute: 'contactName'
+
+  g.column  name:  'Empleado', attribute: 'name', assoc: :employee
+
+  g.column  name:  'Prioridad', attribute: 'name', assoc: :priority
+
+  g.column  name:  'Estatus', attribute: 'name', assoc: :situation
+
+  g.column  name:  'Categoria', attribute: 'name', assoc: :category
+
+  g.column name:  'Notas', attribute: 'notes'
+
+  g.column   do |ticket|
+    link_to('Detalle', edit_ticket_path(ticket))
+  end
+end -%>
+
+<%= link_to 'Nuevo Ticket', new_ticket_path-%>

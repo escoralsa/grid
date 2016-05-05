@@ -1,0 +1,44 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@appliances_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' 
+  
+  g.column name:  'Store', attribute: 'storeNumbre'  do |appliance|
+    appliance.storeNumbre
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |appliance|
+    appliance.name
+  end
+
+  g.column  name:  'IP Interna', attribute: 'intIp' do |appliance|
+    appliance.intIp
+  end
+  
+  g.column  name:  'IP Externa', attribute: 'extIp' do |appliance|
+    appliance.extIp
+  end
+  
+  g.column  name:  'Marca', attribute: 'brand' do |appliance|
+    appliance.brand
+  end
+  
+  g.column  name:  'Modelo', attribute: 'model' do |appliance|
+    appliance.model
+  end
+
+  g.column  name:  'Usuario', attribute: 'user' do |appliance|
+    appliance.user
+  end
+  
+  g.column  name:  'Contrasena', attribute: 'password' do |appliance|
+    appliance.password
+  end
+     
+  
+  g.column   do |appliance|
+    link_to('Edit', edit_appliance_path(appliance))
+  end
+end -%>
+
+<%= link_to 'Nuevo Dispositivo', new_appliance_path-%>

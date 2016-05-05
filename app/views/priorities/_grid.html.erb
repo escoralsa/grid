@@ -1,0 +1,21 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@priorities_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' do |priority|
+    priority.id
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |priority|
+    priority.name
+  end
+
+  g.column  name:  'Descripcion', attribute: 'description' do |priority|
+    priority.description
+  end
+
+  g.column   do |priority|
+    link_to('Edit', edit_priority_path(priority))
+  end
+end -%>
+
+<%= link_to 'Nueva Prioridad', new_priority_path-%>

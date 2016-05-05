@@ -1,0 +1,25 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@employees_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id' do |employee|
+    employee.id
+  end
+
+  g.column name:  'Nombre', attribute: 'name'  do |employee|
+    employee.name
+  end
+
+  g.column  name:  'Telefono', attribute: 'phone' do |employee|
+    employee.phone
+  end
+  
+  g.column  name:  'Email', attribute: 'email' do |employee|
+    employee.email
+  end
+
+  g.column   do |employee|
+    link_to('Edit', edit_employee_path(employee))
+  end
+end -%>
+
+<%= link_to 'Nuevo Empleado', new_employee_path-%>

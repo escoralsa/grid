@@ -1,0 +1,62 @@
+!!! 5
+%html
+  %head
+    %title BluesageSoftware MX
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+
+  %body
+    %nav.navbar.navbar-default.navbar-default{:role => "navigation"}
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => tickets_path('index')} Blue Sage Mexico
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              =link_to 'Reportes', tickets_path('index')
+            %li
+              =link_to 'Atenciones', activities_path('index')
+            %li
+              =link_to 'Clientes', customers_path('index')
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                Catalogos
+                %span.caret
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  %a=link_to 'Dispositivos', appliances_path('index')
+                %li
+                  %a=link_to 'Categorias', categories_path('index')
+                %li
+                  %a=link_to 'Prioridades', priorities_path('index')
+                %li
+                  %a=link_to 'Estatus', situations_path('index')
+                %li.divider
+                %li
+                  %a=link_to 'Asesores', employees_path('index')
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => "#"}
+                %span.glyphicon.glyphicon-user
+                = current_user.name
+            %li
+              %a{:href => destroy_user_session_path}
+                %span.glyphicon.glyphicon-log-in
+                Cerrar Sesion
+
+    .container-fluid
+
+      =yield
+
+
+
+      %hr
+
+      %footer

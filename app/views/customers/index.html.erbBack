@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Adress</th>
+      <th>Phone</th>
+      <th>Contact</th>
+      <th>Rfc</th>
+      <th>Email</th>
+      <th>Ip</th>
+      <th>Server</th>
+      <th>Datacenter</th>
+      <th>Vpacesetter</th>
+      <th>Vprogress</th>
+      <th>Usernumber</th>
+      <th>Catalog</th>
+      <th>Softwarec</th>
+      <th>Programesp</th>
+      <th>Emailpdf</th>
+      <th>Emailxml</th>
+      <th>Pdf</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.adress %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.contact %></td>
+        <td><%= customer.rfc %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.ip %></td>
+        <td><%= customer.server %></td>
+        <td><%= customer.datacenter %></td>
+        <td><%= customer.vpacesetter %></td>
+        <td><%= customer.vprogress %></td>
+        <td><%= customer.userNumber %></td>
+        <td><%= customer.catalog %></td>
+        <td><%= customer.softwareC %></td>
+        <td><%= customer.programesp %></td>
+        <td><%= customer.emailpdf %></td>
+        <td><%= customer.emailxml %></td>
+        <td><%= customer.pdf %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

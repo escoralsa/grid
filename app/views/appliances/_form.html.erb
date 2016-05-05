@@ -1,0 +1,53 @@
+<%= form_for(@appliance) do |f| %>
+  <% if @appliance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appliance.errors.count, "error") %> prohibited this appliance from being saved:</h2>
+
+      <ul>
+      <% @appliance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :storeNumbre %><br>
+    <%= f.number_field :storeNumbre %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :intIp %><br>
+    <%= f.text_field :intIp %>
+  </div>
+  <div class="field">
+    <%= f.label :extIp %><br>
+    <%= f.text_field :extIp %>
+  </div>
+  <div class="field">
+    <%= f.label :brand %><br>
+    <%= f.text_field :brand %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.text_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.text_field :customer_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

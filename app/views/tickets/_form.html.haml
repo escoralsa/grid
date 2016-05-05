@@ -1,0 +1,69 @@
+%ul.nav.nav-tabs
+  %li.active
+    %a{"data-toggle" => "tab", :href => "#home"} Datos
+  %li
+    %a{"data-toggle" => "tab", :href => "#menu1"} Atenciones
+
+.tab-content
+  #home.tab-pane.fade.in.active
+    %h3
+    = form_for(@ticket) do |f|
+      - if @ticket.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@ticket.errors.count, "error")
+            prohibited this category from being saved:
+          %ul
+            - @ticket.errors.full_messages.each do |message|
+              %li= message
+      #accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse1"}
+                Datos Generales
+          #collapse1.panel-collapse.collapse.in
+            .panel-body
+              .row
+                .col-sm-4
+                  = f.label :date
+                  = f.datetime_select :date, {class: "form-control"}
+                .col-sm-4
+                  = f.label :contactName
+                  = f.text_field :contactName, {class: "form-control"}
+                .col-sm-4
+                  = f.label :notes
+                  = f.text_area :notes, {class: "form-control"}
+              .row
+                .col-sm-4
+                  = f.label :employee_id
+                  = f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name))
+                .col-sm-4
+                  = f.label :customer_id
+                  = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name))
+                .col-sm-4
+                  = f.label :priority_id
+                  = f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name))
+              .row
+                .col-sm-4
+                  = f.label :situation_id
+                  = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name))
+                .col-sm-4
+                  = f.label :category_id
+                  = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name))
+                .col-sm-4
+                  = f.hidden_field :user_id, :value => current_user.id.to_i
+
+
+      .actions
+        = f.submit "Guardar", class: "btn btn-default"
+          
+  #menu1.tab-pane.fade
+    %h3 Atenciones
+    .row-fluid
+      .col-md-12
+        = render  'activities_grid'
+  #menu2.tab-pane.fade
+    %h3 Menu 2
+    %p Some content in menu 2.
+  

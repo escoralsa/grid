@@ -1,0 +1,47 @@
+= form_for(@appliance) do |f|
+  - if @appliance.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@appliance.errors.count, "error")
+        prohibited this device from being saved:
+      %ul
+        - @appliance.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :storeNumbre
+    %br/
+    = f.number_field :storeNumbre
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :intIp
+    %br/
+    = f.text_field :intIp
+  .field
+    = f.label :extIp
+    %br/
+    = f.text_field :extIp
+  .field
+    = f.label :brand
+    %br/
+    = f.text_field :brand
+  .field
+    = f.label :model
+    %br/
+    = f.text_field :model
+  .field
+    = f.label :user
+    %br/
+    = f.text_field :user
+  .field
+    = f.label :password
+    %br/
+    = f.text_field :password
+  .field
+    = f.label :customer_id
+    %br/
+    = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name))
+  .actions
+    = f.submit
