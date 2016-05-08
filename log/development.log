@@ -36115,3 +36115,54 @@ Processing by TicketsController#index as HTML
   Rendered tickets/_grid.html.erb (25.6ms)
   Rendered tickets/index.html.haml within layouts/application (26.3ms)
 Completed 200 OK in 54ms (Views: 44.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/" for ::1 at 2016-05-08 04:58:03 -0700
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(DISTINCT `tickets`.`id`) FROM `tickets` LEFT OUTER JOIN `users` ON `users`.`id` = `tickets`.`user_id` LEFT OUTER JOIN `customers` ON `customers`.`id` = `tickets`.`customer_id` LEFT OUTER JOIN `employees` ON `employees`.`id` = `tickets`.`employee_id` LEFT OUTER JOIN `priorities` ON `priorities`.`id` = `tickets`.`priority_id` LEFT OUTER JOIN `situations` ON `situations`.`id` = `tickets`.`situation_id` LEFT OUTER JOIN `categories` ON `categories`.`id` = `tickets`.`category_id`
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT  `tickets`.`id` AS t0_r0, `tickets`.`date` AS t0_r1, `tickets`.`contactName` AS t0_r2, `tickets`.`notes` AS t0_r3, `tickets`.`employee_id` AS t0_r4, `tickets`.`customer_id` AS t0_r5, `tickets`.`priority_id` AS t0_r6, `tickets`.`situation_id` AS t0_r7, `tickets`.`category_id` AS t0_r8, `tickets`.`created_at` AS t0_r9, `tickets`.`updated_at` AS t0_r10, `tickets`.`user_id` AS t0_r11, `users`.`id` AS t1_r0, `users`.`email` AS t1_r1, `users`.`encrypted_password` AS t1_r2, `users`.`reset_password_token` AS t1_r3, `users`.`reset_password_sent_at` AS t1_r4, `users`.`remember_created_at` AS t1_r5, `users`.`sign_in_count` AS t1_r6, `users`.`current_sign_in_at` AS t1_r7, `users`.`last_sign_in_at` AS t1_r8, `users`.`current_sign_in_ip` AS t1_r9, `users`.`last_sign_in_ip` AS t1_r10, `users`.`created_at` AS t1_r11, `users`.`updated_at` AS t1_r12, `users`.`name` AS t1_r13, `customers`.`id` AS t2_r0, `customers`.`name` AS t2_r1, `customers`.`adress` AS t2_r2, `customers`.`phone` AS t2_r3, `customers`.`contact` AS t2_r4, `customers`.`rfc` AS t2_r5, `customers`.`email` AS t2_r6, `customers`.`ip` AS t2_r7, `customers`.`server` AS t2_r8, `customers`.`datacenter` AS t2_r9, `customers`.`vpacesetter` AS t2_r10, `customers`.`vprogress` AS t2_r11, `customers`.`userNumber` AS t2_r12, `customers`.`catalog` AS t2_r13, `customers`.`softwareC` AS t2_r14, `customers`.`programesp` AS t2_r15, `customers`.`emailpdf` AS t2_r16, `customers`.`emailxml` AS t2_r17, `customers`.`pdf` AS t2_r18, `customers`.`created_at` AS t2_r19, `customers`.`updated_at` AS t2_r20, `employees`.`id` AS t3_r0, `employees`.`name` AS t3_r1, `employees`.`email` AS t3_r2, `employees`.`phone` AS t3_r3, `employees`.`created_at` AS t3_r4, `employees`.`updated_at` AS t3_r5, `priorities`.`id` AS t4_r0, `priorities`.`name` AS t4_r1, `priorities`.`description` AS t4_r2, `priorities`.`created_at` AS t4_r3, `priorities`.`updated_at` AS t4_r4, `situations`.`id` AS t5_r0, `situations`.`name` AS t5_r1, `situations`.`description` AS t5_r2, `situations`.`created_at` AS t5_r3, `situations`.`updated_at` AS t5_r4, `categories`.`id` AS t6_r0, `categories`.`name` AS t6_r1, `categories`.`description` AS t6_r2, `categories`.`created_at` AS t6_r3, `categories`.`updated_at` AS t6_r4 FROM `tickets` LEFT OUTER JOIN `users` ON `users`.`id` = `tickets`.`user_id` LEFT OUTER JOIN `customers` ON `customers`.`id` = `tickets`.`customer_id` LEFT OUTER JOIN `employees` ON `employees`.`id` = `tickets`.`employee_id` LEFT OUTER JOIN `priorities` ON `priorities`.`id` = `tickets`.`priority_id` LEFT OUTER JOIN `situations` ON `situations`.`id` = `tickets`.`situation_id` LEFT OUTER JOIN `categories` ON `categories`.`id` = `tickets`.`category_id`  ORDER BY `tickets`.`id` asc LIMIT 20 OFFSET 0[0m
+  Rendered tickets/_grid.html.erb (444.6ms)
+  Rendered tickets/index.html.haml within layouts/application (451.2ms)
+Completed 200 OK in 1051ms (Views: 938.5ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/users/sign_out" for ::1 at 2016-05-08 04:58:07 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 32ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-05-08 04:58:07 -0700
+Processing by TicketsController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-05-08 04:58:07 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.haml within layouts/login (36.2ms)
+Completed 200 OK in 76ms (Views: 64.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-05-08 04:58:12 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BtVyb/ZvWy0dhDugJnqJYkSXkG3pPxLWQVYuWkOaKnxev2U8PX1UijHGZjw3seGLBp8nxoxK9+1Rkh0dfOazWw==", "user"=>{"email"=>"es.coral.sa@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Iniciar"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'es.coral.sa@gmail.com'  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-05-04 23:19:14', `current_sign_in_at` = '2016-05-08 11:58:12', `current_sign_in_ip` = '::1', `sign_in_count` = 20, `updated_at` = '2016-05-08 11:58:12' WHERE `users`.`id` = 1[0m
+  [1m[35m (14.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 279ms (ActiveRecord: 16.2ms)
+
+
+Started GET "/" for ::1 at 2016-05-08 04:58:12 -0700
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (3.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `tickets`.`id`) FROM `tickets` LEFT OUTER JOIN `users` ON `users`.`id` = `tickets`.`user_id` LEFT OUTER JOIN `customers` ON `customers`.`id` = `tickets`.`customer_id` LEFT OUTER JOIN `employees` ON `employees`.`id` = `tickets`.`employee_id` LEFT OUTER JOIN `priorities` ON `priorities`.`id` = `tickets`.`priority_id` LEFT OUTER JOIN `situations` ON `situations`.`id` = `tickets`.`situation_id` LEFT OUTER JOIN `categories` ON `categories`.`id` = `tickets`.`category_id`
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT  `tickets`.`id` AS t0_r0, `tickets`.`date` AS t0_r1, `tickets`.`contactName` AS t0_r2, `tickets`.`notes` AS t0_r3, `tickets`.`employee_id` AS t0_r4, `tickets`.`customer_id` AS t0_r5, `tickets`.`priority_id` AS t0_r6, `tickets`.`situation_id` AS t0_r7, `tickets`.`category_id` AS t0_r8, `tickets`.`created_at` AS t0_r9, `tickets`.`updated_at` AS t0_r10, `tickets`.`user_id` AS t0_r11, `users`.`id` AS t1_r0, `users`.`email` AS t1_r1, `users`.`encrypted_password` AS t1_r2, `users`.`reset_password_token` AS t1_r3, `users`.`reset_password_sent_at` AS t1_r4, `users`.`remember_created_at` AS t1_r5, `users`.`sign_in_count` AS t1_r6, `users`.`current_sign_in_at` AS t1_r7, `users`.`last_sign_in_at` AS t1_r8, `users`.`current_sign_in_ip` AS t1_r9, `users`.`last_sign_in_ip` AS t1_r10, `users`.`created_at` AS t1_r11, `users`.`updated_at` AS t1_r12, `users`.`name` AS t1_r13, `customers`.`id` AS t2_r0, `customers`.`name` AS t2_r1, `customers`.`adress` AS t2_r2, `customers`.`phone` AS t2_r3, `customers`.`contact` AS t2_r4, `customers`.`rfc` AS t2_r5, `customers`.`email` AS t2_r6, `customers`.`ip` AS t2_r7, `customers`.`server` AS t2_r8, `customers`.`datacenter` AS t2_r9, `customers`.`vpacesetter` AS t2_r10, `customers`.`vprogress` AS t2_r11, `customers`.`userNumber` AS t2_r12, `customers`.`catalog` AS t2_r13, `customers`.`softwareC` AS t2_r14, `customers`.`programesp` AS t2_r15, `customers`.`emailpdf` AS t2_r16, `customers`.`emailxml` AS t2_r17, `customers`.`pdf` AS t2_r18, `customers`.`created_at` AS t2_r19, `customers`.`updated_at` AS t2_r20, `employees`.`id` AS t3_r0, `employees`.`name` AS t3_r1, `employees`.`email` AS t3_r2, `employees`.`phone` AS t3_r3, `employees`.`created_at` AS t3_r4, `employees`.`updated_at` AS t3_r5, `priorities`.`id` AS t4_r0, `priorities`.`name` AS t4_r1, `priorities`.`description` AS t4_r2, `priorities`.`created_at` AS t4_r3, `priorities`.`updated_at` AS t4_r4, `situations`.`id` AS t5_r0, `situations`.`name` AS t5_r1, `situations`.`description` AS t5_r2, `situations`.`created_at` AS t5_r3, `situations`.`updated_at` AS t5_r4, `categories`.`id` AS t6_r0, `categories`.`name` AS t6_r1, `categories`.`description` AS t6_r2, `categories`.`created_at` AS t6_r3, `categories`.`updated_at` AS t6_r4 FROM `tickets` LEFT OUTER JOIN `users` ON `users`.`id` = `tickets`.`user_id` LEFT OUTER JOIN `customers` ON `customers`.`id` = `tickets`.`customer_id` LEFT OUTER JOIN `employees` ON `employees`.`id` = `tickets`.`employee_id` LEFT OUTER JOIN `priorities` ON `priorities`.`id` = `tickets`.`priority_id` LEFT OUTER JOIN `situations` ON `situations`.`id` = `tickets`.`situation_id` LEFT OUTER JOIN `categories` ON `categories`.`id` = `tickets`.`category_id`  ORDER BY `tickets`.`id` asc LIMIT 20 OFFSET 0[0m
+  Rendered tickets/_grid.html.erb (20.8ms)
+  Rendered tickets/index.html.haml within layouts/application (21.7ms)
+Completed 200 OK in 62ms (Views: 54.1ms | ActiveRecord: 5.5ms)
