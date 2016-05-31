@@ -1,9 +1,33 @@
 <%# show_filters: :when_filtered %>
 <%= grid(@tickets_grid) do |g|
 
+  @now = Time.now
+
+ # grid(@tickets_grid) do |g|
+
+  g.row_attributes do |ticket|
+    if ticket.priority.name == 'Severa'
+      {class: 'text-danger'}
+    end
+  end
+
+  g.column name:  'Espera', attribute: 'date', filter_type: :rails_time_helper  do |ticket|
+    #ticket.date.to_formatted_s(:short)
+    @a = ticket.situation_id
+    if @a != 2
+     "%02d:%02d:%02d:%02d" % [(@now - ticket.date)/86400, (@now - ticket.date)/3600%24, (@now - ticket.date)/60%60, (@now - ticket.date)%60]
+
+      else
+        "%02d:%02d:%02d:%02d" % [(0 - 0)/86400, (0)/3600%24, (0)/60%60, (0)%60]
+      end
+  end
+
+
   g.column name:  'ID', attribute: 'id'
   
-  g.column name:  'Fecha', attribute: 'date'
+  g.column name:  'Fecha', attribute: 'date' do |ticket|
+    ticket.date.to_formatted_s(:short)
+    end
 
   g.column  name:  'Usuario', attribute: 'name', assoc: :user
 
@@ -11,19 +35,34 @@
   
   g.column name:  'Contacto', attribute: 'contactName'   
    
-  g.column  name:  'Asignado a:', attribute: 'name', assoc: :employee
- 
-  g.column  name:  'Prioridad', attribute: 'name', assoc: :priority
-  
-  g.column  name:  'Estatus', attribute: 'name', assoc: :situation
-  
-  g.column  name:  'Categoria', attribute: 'name', assoc: :category
+  g.column  name:  'Asignado a:', attribute: 'name', assoc: :employee, custom_filter: :auto  do |ticket|
+    ticket.employee.name if ticket.employee
+  end
+
+  g.column name:  'Priority', attribute: 'name', assoc: :priority, custom_filter: :auto  do |ticket|
+    ticket.priority.name if ticket.priority
+  end
+
+
+  g.column  name:  'Estatus', attribute: 'name', auto_reload: true, assoc: :situation, custom_filter: :auto  do |ticket|
+    ticket.situation.name if ticket.situation
+  end
+
+
+  g.column  name:  'Categoria', attribute: 'name', assoc: :category, custom_filter: :auto  do |ticket|
+    ticket.category.name if ticket.category
+  end
   
   g.column name:  'Notas', attribute: 'notes'
     
   g.column   do |ticket|
     link_to('Detalle', edit_ticket_path(ticket))
   end
+
+
+
 end -%>
+
+
 
 <%= link_to 'Nuevo Ticket', new_ticket_path-%>

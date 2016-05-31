@@ -20,6 +20,8 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
+              =link_to 'Ticket', new_ticket_path
+            %li
               =link_to 'Reportes', tickets_path('index')
             %li
               =link_to 'Atenciones', activities_path('index')

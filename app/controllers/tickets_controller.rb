@@ -4,17 +4,29 @@ class TicketsController < ApplicationController
 
   # GET /tickets
   def index
-     @tickets_grid = initialize_grid(Ticket, order: 'id')
-     
+
+  @tickets_grid = initialize_grid(Ticket,
+                                  order: 'date',
+                                  order_direction: 'desc',
+                                  per_page:15,
+                                  include: [:priority, :situation, :category, :employee],
+                                  custom_order: {
+                                      'tickets.priority_id' => 'priorities.name',
+                                      'tickets.situation_id' => 'situations.name',
+                                      'tickets.category_id' => 'categories.name',
+                                      'tickets.employee_id' => 'employees.name'
+                                  }
+  )
+
+
   end
 
-  # GET /tickets/1
   def show
+
   end
 
-  # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new    
   end
 
   # GET /tickets/1/edit
@@ -25,7 +37,9 @@ class TicketsController < ApplicationController
 
   # POST /tickets
   def create
+
     @ticket = Ticket.new(ticket_params)
+    ActionCorreo.bienvenido_email(ticket_params).deliver
 
     if @ticket.save
       redirect_to tickets_path , notice: 'Ticket was successfully created.'
@@ -57,6 +71,7 @@ class TicketsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def ticket_params
-      params.require(:ticket).permit(:date, :contactName, :notes, :employee_id, :customer_id, :priority_id, :situation_id, :category_id, :user_id)
+      params.require(:ticket).permit(:date, :contactName, :notes, :employee_id, :customer_id, :priority_id, :situation_id, :category_id, :user_id, :image)
     end
+    
 end

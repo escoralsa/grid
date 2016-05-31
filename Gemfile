@@ -33,6 +33,9 @@ gem 'devise'
 
 gem 'uglifier', '>= 1.0.3'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 #group :production, :postgres do
  # gem 'pg'
 #send

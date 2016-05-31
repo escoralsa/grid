@@ -11,7 +11,6 @@ Examples::Application.routes.draw do
   resources :priorities
   resources :categories
 
-
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/new' => 'devise/registrations#new'

@@ -5,4 +5,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :situation
   belongs_to :category
   belongs_to :user
+  mount_uploader :image, ImageUploader
+
+    
 end
