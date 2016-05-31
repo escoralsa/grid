@@ -40,8 +40,8 @@ Examples::Application.configure do
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'gmail.com',
-  user_name:            'es.coral.sa@gmail.com',
-  password:             'ec0ra15ajrcfnbjsd',
+  user_name:            'bssmxsoporte@gmail.com',
+  password:             'bss44mx44',
   authentication:       'plain',
   enable_starttls_auto: true  }
 end
