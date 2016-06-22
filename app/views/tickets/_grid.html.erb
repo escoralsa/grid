@@ -11,7 +11,7 @@
     end
   end
 
-  g.column name:  'Espera', attribute: 'date', filter_type: :rails_time_helper  do |ticket|
+  g.column name:  'Espera', attribute: 'date', filter: false do |ticket|
     #ticket.date.to_formatted_s(:short)
     @a = ticket.situation_id
     if @a != 2
@@ -22,26 +22,30 @@
       end
   end
 
-
-  g.column name:  'ID', attribute: 'id'
+  g.column name:  'ID', attribute: 'id', html: {style: 'text-align: center; width: auto '} do |ticket|
+  link_to(ticket.id, edit_ticket_path(ticket))
+  end
   
   g.column name:  'Fecha', attribute: 'date' do |ticket|
-    ticket.date.to_formatted_s(:short)
+    ticket.date.to_s(:db)
     end
 
-  g.column  name:  'Usuario', attribute: 'name', assoc: :user
+
+  #g.column  name:  'Usuario:', attribute: 'name', auto_reload: true, assoc: :user, custom_filter: :auto  do |ticket|
+   # ticket.user.name if ticket.user
+  #end
 
   g.column  name:  'Num. Cuenta', attribute: 'accnumber', assoc: :customer
 
   g.column  name:  'Cliente', attribute: 'name', assoc: :customer
   
-  g.column name:  'Contacto', attribute: 'contactName'   
+ # g.column name:  'Contacto', attribute: 'contactName'
    
-  g.column  name:  'Asignado a:', attribute: 'name', assoc: :employee, custom_filter: :auto  do |ticket|
+  g.column  name:  'Asignado a:', attribute: 'name', auto_reload: true, assoc: :employee, custom_filter: :auto  do |ticket|
     ticket.employee.name if ticket.employee
   end
 
-  g.column name:  'Priority', attribute: 'name', assoc: :priority, custom_filter: :auto  do |ticket|
+  g.column name:  'Priority', attribute: 'name', auto_reload: true, assoc: :priority, custom_filter: :auto  do |ticket|
     ticket.priority.name if ticket.priority
   end
 
@@ -51,15 +55,14 @@
   end
 
 
-  g.column  name:  'Categoria', attribute: 'name', assoc: :category, custom_filter: :auto  do |ticket|
-    ticket.category.name if ticket.category
-  end
+ # g.column  name:  'Categoria', attribute: 'name', auto_reload: true, assoc: :category, custom_filter: :auto  do |ticket|
+  #  ticket.category.name if ticket.category
+  #end
   
-  g.column name:  'Notas', attribute: 'notes'
-    
   g.column   do |ticket|
-    link_to('Detalle', edit_ticket_path(ticket))
+    link_to('Eliminar', ticket_path(ticket), data: {confirm: 'Esta seguro?'}, method: :delete)
   end
+
 
 
 
@@ -68,3 +71,7 @@ end -%>
 
 
 <%= link_to 'Nuevo Ticket', new_ticket_path-%>
+
+<script>
+  $('#datepicker').datepicker({format: 'yyyy-mm-dd'});
+</script>

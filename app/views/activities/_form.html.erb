@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :ticket_id %><br>
-    <%= f.select(:ticket_id, options_from_collection_for_select(Ticket.all, :id, :id)) %>
+    <%= f.select(:ticket_id, options_from_collection_for_select(Ticket.all, :id, :id, @ticketnum)) %>
   </div>
   <div class="actions">
     <%= f.submit %>

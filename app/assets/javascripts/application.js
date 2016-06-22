@@ -18,5 +18,3 @@
 //= require wice_grid
 //= require turbolinks
 //= require_tree .
-
-

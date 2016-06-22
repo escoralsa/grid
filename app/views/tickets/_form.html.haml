@@ -53,6 +53,10 @@
                   = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, @ticket.category_id))
                 .col-sm-4
                   = f.hidden_field :user_id, :value => current_user.id.to_i
+              .row
+                .col-sm-4
+                  = f.label :user_id
+                  = f.text_field :user_id, :value => @ticket.user.name, :disabled => true
                 .col-sm-4
                   = f.file_field :image
                   = image_tag(@ticket.image.thumb.url)
@@ -69,5 +73,4 @@
         = render  'activities_grid'
   #menu2.tab-pane.fade
     %h3 Menu 2
-    %p Some content in menu 2.
-Ec0ra15a
+    %p Some content in menu 2.s

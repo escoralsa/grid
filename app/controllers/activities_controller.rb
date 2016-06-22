@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/new
   def new
+    @ticketnum = params[:ticketnum]
     @activity = Activity.new
   end
 
@@ -24,6 +25,7 @@ class ActivitiesController < ApplicationController
   # POST /activities
   def create
     @activity = Activity.new(activity_params)
+
 
     if @activity.save
       redirect_to @activity, notice: 'Activity was successfully created.'

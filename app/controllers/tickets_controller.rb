@@ -50,7 +50,7 @@ class TicketsController < ApplicationController
 
   # PATCH/PUT /tickets/1
   def update
-    if @ticket.update(ticket_params)
+    if @ticket.update(ticket_params.except(:user_id))
       redirect_to edit_ticket_path, notice: 'Registro actualizado'
     else
       render :edit

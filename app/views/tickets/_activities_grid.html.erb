@@ -7,7 +7,7 @@
   
   g.column  name:  'Ticket', attribute: 'id', assoc: :ticket
      
-  g.column  name:  'Empleado', attribute: 'name', assoc: :employee
+  g.column  name:  'Usuario', attribute: 'name', assoc: :user
   
   g.column name:  'Notas', attribute: 'description'
   
@@ -16,4 +16,4 @@
   end
 end -%>
 
-<%= link_to 'Nueva Atencion', new_activity_path-%>
+<%= link_to 'Nueva Atencion', new_activity_path(:ticketnum => @ticket.id)-%>
