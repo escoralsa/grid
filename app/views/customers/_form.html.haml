@@ -27,8 +27,12 @@
             .panel-body
               .row
                 .col-sm-4
+                  = f.label :accnumber
+                  = f.text_field :accnumber, {class: "form-control"}
+                .col-sm-4
                   = f.label :name
                   = f.text_field :name, {class: "form-control"}
+              .row
                 .col-sm-4
                   = f.label :adress
                   = f.text_area :adress, {class: "form-control"}
@@ -42,6 +46,7 @@
                 .col-sm-4
                   = f.label :rfc
                   = f.text_field :rfc, {class: "form-control"}
+              .row
                 .col-sm-4
                   = f.label :email
                   = f.text_field :email, {class: "form-control"}

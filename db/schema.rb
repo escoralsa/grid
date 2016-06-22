@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521004543) do
+ActiveRecord::Schema.define(version: 20160621182849) do
 
   create_table "activities", force: :cascade do |t|
     t.datetime "date"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160521004543) do
     t.boolean  "pdf"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "accnumber",   limit: 4
   end
 
   create_table "devices", force: :cascade do |t|

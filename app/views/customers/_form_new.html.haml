@@ -8,6 +8,10 @@
         - @customer.errors.full_messages.each do |message|
           %li= message
   .field
+    = f.label :accnumber
+    %br
+      = f.text_field :accnumber
+  .field
     = f.label :name
     %br
       = f.text_field :name
