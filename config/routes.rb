@@ -1,6 +1,7 @@
 # encoding: utf-8
 Examples::Application.routes.draw do
 
+  resources :attacheds
   devise_for :users
   resources :appliances
   resources :activities
@@ -68,8 +69,7 @@ Examples::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "tickets#index"
-
+  root :to => "tickets#new"
 
   #
 

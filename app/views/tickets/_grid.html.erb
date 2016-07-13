@@ -49,12 +49,11 @@
     ticket.priority.name if ticket.priority
   end
 
-
   g.column  name:  'Estatus', attribute: 'name', auto_reload: true, assoc: :situation, custom_filter: :auto  do |ticket|
     ticket.situation.name if ticket.situation
   end
 
-
+ #http://localhost:3000/tickets.index?grid[f][situations.name][]=abierto
  # g.column  name:  'Categoria', attribute: 'name', auto_reload: true, assoc: :category, custom_filter: :auto  do |ticket|
   #  ticket.category.name if ticket.category
   #end

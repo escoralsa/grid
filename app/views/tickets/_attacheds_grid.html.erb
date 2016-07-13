@@ -1,0 +1,18 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@attacheds_grid) do |g|
+
+  g.column name:  'ID', attribute: 'id'
+
+  g.column name:  'Notas', attribute: 'description'
+
+  g.column do |attached|
+    link_to('Ver', image_path(attached.file), :target => "_blank")
+  end
+
+  g.column   do |attached|
+    link_to('Edit', edit_attached_path(attached))
+  end
+end -%>
+
+
+<%= link_to 'Nuevo Archivo', new_attached_path(:ticketnum => @ticket.id)-%>

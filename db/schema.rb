@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621182849) do
+ActiveRecord::Schema.define(version: 20160623082120) do
 
   create_table "activities", force: :cascade do |t|
     t.datetime "date"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160621182849) do
   end
 
   add_index "appliances", ["customer_id"], name: "index_appliances_on_customer_id", using: :btree
+
+  create_table "attacheds", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.string   "file",        limit: 255
+    t.integer  "ticket_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "attacheds", ["ticket_id"], name: "index_attacheds_on_ticket_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -262,6 +272,7 @@ ActiveRecord::Schema.define(version: 20160621182849) do
   add_foreign_key "activities", "tickets"
   add_foreign_key "activities", "users"
   add_foreign_key "appliances", "customers"
+  add_foreign_key "attacheds", "tickets"
   add_foreign_key "tickets", "categories"
   add_foreign_key "tickets", "customers"
   add_foreign_key "tickets", "employees"

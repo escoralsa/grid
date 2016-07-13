@@ -33,6 +33,7 @@ class TicketsController < ApplicationController
   def edit
     @user_id = current_user
     @activities_grid = initialize_grid(Activity, order: 'id', :conditions => ['ticket_id = ?', @ticket])
+    @attacheds_grid = initialize_grid(Attached, order: 'id', :conditions => ['ticket_id = ?', @ticket])
   end
 
   # POST /tickets

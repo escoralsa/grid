@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attacheds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>File</th>
+      <th>Ticket</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attacheds.each do |attached| %>
+      <tr>
+        <td><%= attached.description %></td>
+        <td><%= attached.file %></td>
+        <td><%= attached.ticket %></td>
+        <td><%= link_to 'Show', attached %></td>
+        <td><%= link_to 'Edit', edit_attached_path(attached) %></td>
+        <td><%= link_to 'Destroy', attached, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attached', new_attached_path %>

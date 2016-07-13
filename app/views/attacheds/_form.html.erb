@@ -1,0 +1,29 @@
+<%= form_for(@attached) do |f| %>
+  <% if @attached.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attached.errors.count, "error") %> prohibited this attached from being saved:</h2>
+
+      <ul>
+      <% @attached.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.file_field :file %>
+    <%= link_to "Ver", image_path(@attached.file), :target => "_blank" %>
+  </div>
+  <div class="field">
+    <%= f.label :ticket_id %><br>
+    <%= f.select(:ticket_id, options_from_collection_for_select(Ticket.all, :id, :id, @ticketnum)) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,41 +1,41 @@
 = form_for(@ticket) do |f|
   - if @ticket.errors.any?
     #error_explanation
-      %h2
+      %h9
         = pluralize(@ticket.errors.count, "error")
         prohibited this ticket from being saved:
       %ul
         - @ticket.errors.full_messages.each do |message|
           %li= message
   .row
-    .col-sm-5
+    .col-sm-9
       = f.label :date
       = f.datetime_select :date, {class: "form-control"}
-    .col-sm-5
+    .col-sm-9
       = f.label :customer_id
       = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name, @ticket.customer_id),{}, {:class => "form-control"} )
-    .col-sm-5
-      = f.label :contactName
-      = f.text_field :contactName, {class: "form-control"}
-    .col-sm-5
-      = f.label :priority_id
-      = f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name, @ticket.priority_id),{}, {:class => "form-control"} )
-    .col-sm-5
-      = f.label :situation_id
-      = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name, @ticket.situation_id),{}, {:class => "form-control"} )
-    .col-sm-5
-      = f.label :category_id
-      = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, @ticket.category_id),{}, {:class => "form-control"} )
-    .col-sm-5
-      = f.label :employee_id
-      = f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name, @ticket.employee_id),{}, {:class => "form-control"} )
-    .col-sm-5
+    .col-sm-9
       = f.label :notes
       = f.text_area :notes, {class: "form-control", rows: "5"}
-    .col-sm-5
+    .col-sm-9
+      = f.label :contactName
+      = f.text_field :contactName, {class: "form-control"}
+    .col-sm-9
+      = f.label 'Estatus'
+      = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name, 2),{}, {:class => "form-control"} )
+    .col-sm-9
+      = f.label :priority_id
+      = f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name, 4),{}, {:class => "form-control"} )
+    .col-sm-9
+      = f.label :category_id
+      = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, 8),{}, {:class => "form-control"} )
+    .col-sm-9
+      = f.label 'Asignada a:'
+      = f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name, 6),{}, {:class => "form-control"} )
+    .col-sm-9
       = f.label :adjunto
       = f.file_field :image
-    .col-sm-5
+    .col-sm-9
       = f.hidden_field :user_id, :value => current_user.id.to_i
 
   .actions
