@@ -14,7 +14,7 @@
   g.column name:  'Espera', attribute: 'date', filter: false do |ticket|
     #ticket.date.to_formatted_s(:short)
     @a = ticket.situation_id
-    if @a != 2
+    if @a != 4
      "%02d:%02d:%02d:%02d" % [(@now - ticket.date)/86400, (@now - ticket.date)/3600%24, (@now - ticket.date)/60%60, (@now - ticket.date)%60]
 
       else

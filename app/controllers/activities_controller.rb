@@ -5,7 +5,11 @@ class ActivitiesController < ApplicationController
 
   # GET /activities
   def index
-    @activities_grid = initialize_grid(Activity, order: 'id')
+    @activities_grid = initialize_grid(Activity,
+                                       order: 'date',
+                                       order_direction: 'desc',
+                                       per_page: 15)
+
   end
 
   # GET /activities/1

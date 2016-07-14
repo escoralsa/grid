@@ -1,27 +1,24 @@
 <%# show_filters: :when_filtered %>
 <%= grid(@customers_grid) do |g|
 
-  g.column name:  'ID', attribute: 'id' do |customer|
-    customer.id
+  g.column name:  'Cuenta', attribute: 'accnumber' do |customer|
+    customer.accnumber
   end
 
   g.column name:  'Nombre', attribute: 'name'  do |customer|
     customer.name
   end
 
-  g.column  name:  'Direccion', attribute: 'adress' do |customer|
-    customer.adress
+  g.column  name:  'Correo', attribute: 'email' do |customer|
+    customer.email
   end
-  
-  g.column  name:  'Telefono', attribute: 'phone' do |customer|
-    customer.phone
-  end
-  
-  g.column  name:  'RFC', attribute: 'rfc' do |customer|
-    customer.rfc
-  end
+
   g.column   do |customer|
     link_to('Detalle', edit_customer_path(customer))
+  end
+
+  g.column   do |customer|
+    link_to('Eliminar', customer_path(customer), data: {confirm: 'Esta seguro?'}, method: :delete)
   end
   
 end -%>

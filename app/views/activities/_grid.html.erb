@@ -1,9 +1,9 @@
 <%# show_filters: :when_filtered %>
 <%= grid(@activities_grid) do |g|
 
-  g.column name:  'ID', attribute: 'id'
-  
-  g.column name:  'Fecha', attribute: 'date'
+  g.column name:  'Fecha', attribute: 'date' do |activity|
+    activity.date.to_s(:db)
+  end
   
   g.column  name:  'Ticket', attribute: 'id', assoc: :ticket
      
