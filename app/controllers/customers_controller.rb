@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
 
   # GET /customers
   def index
-    @customers_grid = initialize_grid(Customer, order: 'id')
+    @customers_grid = initialize_grid(Customer, order: 'accnumber')
   end
 
   # GET /customers/1

@@ -3,6 +3,9 @@
 
   @now = Time.now
 
+  @hoy = Time.now.strftime("%Y-%m-%d")
+
+
  # grid(@tickets_grid) do |g|
 
   g.row_attributes do |ticket|
@@ -26,9 +29,15 @@
   link_to(ticket.id, edit_ticket_path(ticket))
   end
   
-  g.column name:  'Fecha', attribute: 'date' do |ticket|
-    ticket.date.to_s(:db)
+  g.column name:  'Fecha', attribute: 'date', class:'special-column' do |ticket|
+    @fechat= ticket.date.strftime("%Y-%m-%d")
+
+    if  @fechat == @hoy
+     [@fechat, {style: 'background-color: rgb(255,153,153);'}]
+      else
+      @fechat
     end
+  end
 
 
   #g.column  name:  'Usuario:', attribute: 'name', auto_reload: true, assoc: :user, custom_filter: :auto  do |ticket|
@@ -38,9 +47,7 @@
   g.column  name:  'Num. Cuenta', attribute: 'accnumber', assoc: :customer
 
   g.column  name:  'Cliente', attribute: 'name', assoc: :customer
-  
- # g.column name:  'Contacto', attribute: 'contactName'
-   
+
   g.column  name:  'Asignado a:', attribute: 'name', auto_reload: true, assoc: :employee, custom_filter: :auto  do |ticket|
     ticket.employee.name if ticket.employee
   end
@@ -52,6 +59,8 @@
   g.column  name:  'Estatus', attribute: 'name', auto_reload: true, assoc: :situation, custom_filter: :auto  do |ticket|
     ticket.situation.name if ticket.situation
   end
+
+  g.column  name:  'Notas', attribute: 'notes'
 
  #http://localhost:3000/tickets.index?grid[f][situations.name][]=abierto
  # g.column  name:  'Categoria', attribute: 'name', auto_reload: true, assoc: :category, custom_filter: :auto  do |ticket|

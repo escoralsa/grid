@@ -13,6 +13,10 @@
     customer.email
   end
 
+  g.column  name:  'Telefono', attribute: 'phone' do |customer|
+    customer.phone
+  end
+
   g.column   do |customer|
     link_to('Detalle', edit_customer_path(customer))
   end

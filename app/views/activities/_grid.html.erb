@@ -4,13 +4,21 @@
   g.column name:  'Fecha', attribute: 'date' do |activity|
     activity.date.to_s(:db)
   end
-  
+
+ # g.column name: 'Customer', attribute: 'customer_id', assoc: :ticket
+
+
+  g.column name:  'Customer', attribute: 'customer_id', auto_reload: true, assoc: :ticket do |activity|
+    activity.ticket.customer.name if activity.ticket
+  end
+
+
   g.column  name:  'Ticket', attribute: 'id', assoc: :ticket
      
   g.column  name:  'Asesor', attribute: 'name', assoc: :user
   
   g.column name:  'Notas', attribute: 'description'
-  
+
   g.column   do |activity|
     link_to('Edit', edit_activity_path(activity))
   end

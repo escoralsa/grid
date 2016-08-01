@@ -5,7 +5,9 @@ class SituationsController < ApplicationController
 
   # GET /situations
   def index
-     @situations_grid = initialize_grid(Situation, order: 'id')
+     @situations_grid = initialize_grid(Situation,
+                                        include: [:Customer],
+                                        order: 'id')
   end
 
   # GET /situations/1

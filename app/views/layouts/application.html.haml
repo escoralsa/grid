@@ -22,7 +22,7 @@
             %li.active
               =link_to 'Ticket', new_ticket_path
             %li
-              =link_to 'Reportes', 'http://192.168.0.117:3000/tickets.index?grid[f][situations.name][]=Abierto'
+              =link_to 'Reportes', 'http://192.168.0.117:3000/tickets.index?grid[f][situations.name][]=!Abierto&grid[f][situations.name][]=!Trabajando&grid[f][situations.name][]=!Pendiente'
             %li
               =link_to 'Atenciones', activities_path('index')
             %li
