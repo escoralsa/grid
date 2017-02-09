@@ -8,40 +8,40 @@
         - @appliance.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :storeNumbre
+    = f.label :Tienda
     %br/
-    = f.number_field :storeNumbre
+    = f.number_field :storeNumbre, {:class => "form-control"}
   .field
-    = f.label :name
+    = f.label :Nombre
     %br/
-    = f.text_field :name
+    = f.text_field :name, {:class => "form-control"}
   .field
-    = f.label :intIp
+    = f.label :Ip_Interna
     %br/
-    = f.text_field :intIp
+    = f.text_field :intIp, {:class => "form-control"}
   .field
-    = f.label :extIp
+    = f.label :Ip_Externa
     %br/
-    = f.text_field :extIp
+    = f.text_field :extIp, {:class => "form-control"}
   .field
-    = f.label :brand
+    = f.label :Marca
     %br/
-    = f.text_field :brand
+    = f.text_field :brand, {:class => "form-control"}
   .field
-    = f.label :model
+    = f.label :Modelo
     %br/
-    = f.text_field :model
+    = f.text_field :model, {:class => "form-control"}
   .field
-    = f.label :user
+    = f.label :Usuario
     %br/
-    = f.text_field :user
+    = f.text_field :user, {:class => "form-control"}
   .field
     = f.label :password
     %br/
-    = f.text_field :password
+    = f.text_field :password, {:class => "form-control"}
   .field
     = f.label :customer_id
     %br/
-    = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name))
+    = f.collection_select :customer_id, Customer.order(:name),:id, :name, {:prompt => 'Select'}, {:class => "form-control"}
   .actions
     = f.submit

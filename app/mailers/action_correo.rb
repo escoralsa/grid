@@ -1,20 +1,30 @@
 class ActionCorreo < ApplicationMailer
   
   def bienvenido_email(ticket_params)
-  @name = ticket_params['contactName']
 
-  @year = ticket_params['date(1i)']
-  @month = ticket_params['date(2i)']
-  @day= ticket_params['date(3i)']
+
+  @id = ticket_params['id']
+
+  @date = ticket_params['date']
 
   @customer_id = ticket_params['customer_id']
-  c = Customer.find(@customer_id)
-  @customer = c.name
-
+  customer = Customer.find(@customer_id)
+  @customer = customer.name
+  @email = customer.email
   @notas = ticket_params['notes']
 
-  @email = c.email
-  mail(to: @email , subject: 'Soporte Tecnico Blue Sage')
+  @contact_id = ticket_params['contact_id']
+  contact = Contact.find(@contact_id)
+  @contact = contact.name
+  @contact_email = contact.email
+
+   @emails = [@contact_email, @email]
+
+    @emails.each do |email|
+      mail(to: email, subject: "Soporte Tecnico Bluesage")
+    end
   end
 
 end
+
+

@@ -13,13 +13,16 @@
       = f.datetime_select :date, {class: "form-control"}
     .col-sm-9
       = f.label :customer_id
-      = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :full_name, @ticket.customer_id),{}, {:class => "form-control"} )
+      = f.collection_select :customer_id, Customer.order(:name),:id, :name, {:prompt => 'Select'}, {:class => "form-control"}
     .col-sm-9
-      = f.label :notes
-      = f.text_area :notes, {class: "form-control", rows: "5"}
+      = f.label :contact_id
+      = f.grouped_collection_select :contact_id, Customer.order(:name), :contacts, :name, :id, :name, {:prompt => 'Select'}, {:class => "form-control"}
     .col-sm-9
       = f.label :contactName
       = f.text_field :contactName, {class: "form-control"}
+    .col-sm-9
+      = f.label :notes
+      = f.text_area :notes, {class: "form-control", rows: "5"}
     .col-sm-9
       = f.label 'Estatus'
       = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name, 1),{}, {:class => "form-control"} )
@@ -37,6 +40,5 @@
       = f.file_field :image
     .col-sm-9
       = f.hidden_field :user_id, :value => current_user.id.to_i
-
   .actions
     = f.submit

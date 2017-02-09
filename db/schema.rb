@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623082120) do
+ActiveRecord::Schema.define(version: 20170208223919) do
 
   create_table "activities", force: :cascade do |t|
     t.datetime "date"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20160623082120) do
 
   add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
+    t.integer  "customer_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "contacts", ["customer_id"], name: "index_contacts_on_customer_id", using: :btree
+
   create_table "customers", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "adress",      limit: 65535
@@ -108,12 +119,47 @@ ActiveRecord::Schema.define(version: 20160623082120) do
 
   add_index "devices", ["customer_id"], name: "index_devices_on_customer_id", using: :btree
 
+  create_table "documents", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "file",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "email",      limit: 255
     t.string   "phone",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "linux_users", force: :cascade do |t|
+    t.string   "user",        limit: 255
+    t.string   "password",    limit: 255
+    t.integer  "customer_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "linux_users", ["customer_id"], name: "index_linux_users_on_customer_id", using: :btree
+
+  create_table "pace_program_customers", force: :cascade do |t|
+    t.integer  "customer_id",     limit: 4
+    t.integer  "pace_program_id", limit: 4
+    t.text     "note",            limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "pace_program_customers", ["customer_id"], name: "index_pace_program_customers_on_customer_id", using: :btree
+  add_index "pace_program_customers", ["pace_program_id"], name: "index_pace_program_customers_on_paceProgram_id", using: :btree
+
+  create_table "pace_programs", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "priorities", force: :cascade do |t|
@@ -205,9 +251,11 @@ ActiveRecord::Schema.define(version: 20160623082120) do
     t.datetime "updated_at",                 null: false
     t.integer  "user_id",      limit: 4
     t.string   "image",        limit: 255
+    t.integer  "contact_id",   limit: 4
   end
 
   add_index "tickets", ["category_id"], name: "index_tickets_on_category_id", using: :btree
+  add_index "tickets", ["contact_id"], name: "index_tickets_on_contact_id", using: :btree
   add_index "tickets", ["customer_id"], name: "index_tickets_on_customer_id", using: :btree
   add_index "tickets", ["employee_id"], name: "index_tickets_on_employee_id", using: :btree
   add_index "tickets", ["priority_id"], name: "index_tickets_on_priority_id", using: :btree
@@ -273,7 +321,11 @@ ActiveRecord::Schema.define(version: 20160623082120) do
   add_foreign_key "activities", "users"
   add_foreign_key "appliances", "customers"
   add_foreign_key "attacheds", "tickets"
+  add_foreign_key "contacts", "customers"
+  add_foreign_key "linux_users", "customers"
+  add_foreign_key "pace_program_customers", "customers"
   add_foreign_key "tickets", "categories"
+  add_foreign_key "tickets", "contacts"
   add_foreign_key "tickets", "customers"
   add_foreign_key "tickets", "employees"
   add_foreign_key "tickets", "priorities"

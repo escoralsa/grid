@@ -1,0 +1,67 @@
+              .row
+                .col-sm-7
+                  = f.label :date
+                  = f.datetime_select :date, {class: "form-control"}, :disabled => true
+                .col-sm-7
+                  = f.label :customer_id
+                  = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :name, @ticket.customer_id))
+                .col-sm-7
+                  = f.label :notes
+                  = f.text_area :notes, {class: "form-control"}
+                .col-sm-7
+                  = f.label :contactName
+                  = f.text_field :contactName, {class: "form-control"}
+                .col-sm-7
+                  = f.label :situation_id
+                  = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name, @ticket.situation_id))
+                .col-sm-7
+                  = f.label :priority_id
+                  = f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name, @ticket.priority_id))
+                .col-sm-7
+                  = f.label :category_id
+                  = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, @ticket.category_id))
+                .col-sm-7
+                  = f.label :employee_id
+                  = f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name, @ticket.employee_id))
+                .col-sm-7
+                  = f.hidden_field :user_id, :value => current_user.id.to_i
+                .col-sm-7
+                  = f.label :user_id
+                  = f.text_field :user_id, :value => @ticket.user.name, :disabled => true
+                .col-sm-7
+                  = f.file_field :image
+                  = image_tag(@ticket.image.thumb.url)
+                  = link_to "Ver", image_path(@ticket.image), :target => "_blank"
+                  = f.check_box :remove_image
+
+
+   .row
+     .col-sm-9
+       = f.label :date
+       = f.datetime_select :date, {class: "form-control"}
+     .col-sm-9
+       = f.label :customer_id
+       = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :full_name, @ticket.customer_id),{}, {:class => "form-control"} )
+     .col-sm-9
+       = f.label :notes
+       = f.text_area :notes, {class: "form-control", rows: "5"}
+     .col-sm-9
+       = f.label :contactName
+       = f.text_field :contactName, {class: "form-control"}
+     .col-sm-9
+       = f.label 'Estatus'
+       = f.select(:situation_id, options_from_collection_for_select(Situation.all, :id, :name, 1),{}, {:class => "form-control"} )
+     .col-sm-9
+       = f.label :priority_id
+       = f.select(:priority_id, options_from_collection_for_select(Priority.all, :id, :name, 4),{}, {:class => "form-control"} )
+     .col-sm-9
+       = f.label :category_id
+       = f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, 8),{}, {:class => "form-control"} )
+     .col-sm-9
+       = f.label 'Asignada a:'
+       = f.select(:employee_id, options_from_collection_for_select(Employee.all, :id, :name, 6),{}, {:class => "form-control"} )
+     .col-sm-9
+       = f.label :adjunto
+       = f.file_field :image
+     .col-sm-9
+       = f.hidden_field :user_id, :value => current_user.id.to_i

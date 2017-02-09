@@ -1,0 +1,29 @@
+<%= form_for(@linux_user) do |f| %>
+  <% if @linux_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@linux_user.errors.count, "error") %> prohibited this linux_user from being saved:</h2>
+
+      <ul>
+      <% @linux_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :full_name),{}, {:class => "form-control"} )%><br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

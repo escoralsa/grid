@@ -1,0 +1,18 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@pace_programs_grid) do |g|
+
+
+  g.column name:  'Nombre', attribute: 'name'  do |pace_programs|
+    pace_programs.name
+  end
+
+  g.column  name:  'Descripcion', attribute: 'description' do |pace_programs|
+    pace_programs.description
+  end
+
+   g.column   do |pace_programs|
+    link_to('Edit', edit_pace_program_path(pace_programs))
+  end
+end -%>
+
+<%= link_to 'New pace_programs', new_pace_program_path-%>

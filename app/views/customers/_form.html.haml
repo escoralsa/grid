@@ -5,6 +5,12 @@
     %a{"data-toggle" => "tab", :href => "#menu1"} Dispositivos
   %li
     %a{"data-toggle" => "tab", :href => "#menu2"} Reportes
+  %li
+    %a{"data-toggle" => "tab", :href => "#menu3"} Contactos
+  %li
+    %a{"data-toggle" => "tab", :href => "#menu4"} Usuarios Linux
+  %li
+    %a{"data-toggle" => "tab", :href => "#menu5"} Programas
 .tab-content
   #home.tab-pane.fade.in.active
     %h3
@@ -58,51 +64,74 @@
           #collapse2.panel-collapse.collapse
             .panel-body
               .row
-                .col-sm-3
-                  = f.label :ip
+                .col-xs-1
+                  = f.label :ip, "IP"
+                .col-xs-4
                   = f.text_field :ip, {class: "form-control"}
-                .col-sm-3
+              .row
+                .col-xs-1
                   = f.label :server
-                  = f.text_area :server
-                .col-sm-3
-                  = f.label :datacenter
+                .col-sm-4
+                  = f.text_area :server, {class: "form-control"}
+              .row
+                .col-sx-1
+                  = f.label :datacenter, "Data Center"
+                .col-sm-4
                   = f.check_box :datacenter, {class: "form-control"}
               .row
-                .col-sm-3
+                .col-xs-1
+                  = f.label :dataCenterLocation, "Ubicacion Data Center"
+                .col-sm-4
+                  = f.select(:dataCenterLocation, options_for_select(["USA","Mexico"]),{:include_blank => "Select" }, {:class => "form-control"})
+              .row
+                .col-xs-1
                   = f.label :vpacesetter, "Version Pacesetter"
+                .col-sm-4
                   = f.text_field :vpacesetter, {class: "form-control"}
-                .col-sm-3
+              .row
+                .col-xs-1
                   = f.label :vprogress, "Version Progress"
+                .col-sm-4
                   = f.text_field :vprogress, {class: "form-control"}
-                .col-sm-3
+              .row
+                .col-xs-1
                   = f.label :userNumber, "Numero de Usuarios"
+                .col-sm-4
                   = f.number_field :userNumber, {class: "form-control"}
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title
-              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse3"}
-                Datos Programas
-          #collapse3.panel-collapse.collapse
-            .panel-body
               .row
-                .col-sm-3
-                  = f.label :catalog
-                  = f.text_field :catalog
-                .col-sm-3
-                  = f.label :softwareC
-                  = f.text_field :softwareC
-                .col-sm-3
+                .col-xs-1
+                  = f.label :catalog, "Catalogo JX"
+                .col-sm-4
+                  = f.text_area :catalog, {class: "form-control"}
+              .row
+                .col-xs-1
+                  = f.label :softwareC, "Tipo de Conexion"
+                .col-sm-4
+                  = f.select(:softwareC, options_for_select(["Telnet","Accuterm"]),{:include_blank => "Select"}, {:class => "form-control"} )
+              .row
+                .col-xs-1
+                  = f.label :link, "Link Accuterm"
+                .col-xs-4
+                  = f.text_field :link, {class: "form-control"}
+              .row
+                .col-xs-1
                   = f.label :programesp, "Programas Especiales"
-                  = f.text_area :programesp
+                .col-sm-4
+                  = f.text_area :programesp, {class: "form-control"}
               .row
-                .col-sm-3
+                .col-xs-1
                   = f.label :emailpdf
-                  = f.text_area :emailpdf
-                .col-sm-3
+                .col-sm-4
+                  = f.text_area :emailpdf, {class: "form-control"}
+              .row
+                .col-xs-1
                   = f.label :emailxml
-                  = f.text_area :emailxml
-                .col-sm-3
+                .col-sm-4
+                  = f.text_area :emailxml, {class: "form-control"}
+              .row
+                .col-xs-1
                   = f.label :pdf
+                .col-sm-4
                   = f.check_box :pdf
       .actions
         = f.submit "Guardar", class: "btn btn-default"
@@ -117,4 +146,18 @@
     .row-fluid
       .col-md-12
         = render   'tickets_grid'
-  
+  #menu3.tab-pane.fade
+    %h3 Contactos
+    .row-fluid
+      .col-md-12
+        = render   'contacts_grid'
+  #menu4.tab-pane.fade
+    %h3 Usuarios Linux
+    .row-fluid
+      .col-md-12
+        = render   'linux_users_grid'
+  #menu5.tab-pane.fade
+    %h3 Programas
+    .row-fluid
+      .col-md-12
+        = render   'pace_program_customers_grid'

@@ -48,6 +48,10 @@
 
   g.column  name:  'Cliente', attribute: 'name', assoc: :customer
 
+  g.column  name:  'Usuario:', attribute: 'name', auto_reload: true, assoc: :user, custom_filter: :auto  do |ticket|
+    ticket.user.name if ticket.user
+  end
+
   g.column  name:  'Asignado a:', attribute: 'name', auto_reload: true, assoc: :employee, custom_filter: :auto  do |ticket|
     ticket.employee.name if ticket.employee
   end

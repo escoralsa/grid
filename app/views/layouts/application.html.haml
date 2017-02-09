@@ -20,7 +20,7 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              =link_to 'Ticket', new_ticket_path
+              =link_to 'Crear Ticket', new_ticket_path
             %li
               =link_to 'Reportes', 'http://192.168.0.117:3000/tickets.index?grid[f][situations.name][]=Abierto&grid[f][situations.name][]=Trabajando&grid[f][situations.name][]=Pendiente'
             %li
@@ -29,7 +29,7 @@
               =link_to 'Clientes', customers_path('index')
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Catalogos
+                Administracion
                 %span.caret
               %ul.dropdown-menu{:role => "menu"}
                 %li
@@ -43,6 +43,12 @@
                 %li.divider
                 %li
                   %a=link_to 'Asesores', employees_path('index')
+                %li
+                  %a=link_to 'Contactos', contacts_path('index')
+                %li
+                  %a=link_to 'Usuarios Linux', linux_users_path('index')
+                %li
+                  %a=link_to 'Programas', pace_programs_path('index')
           %ul.nav.navbar-nav.navbar-right
             %li
               %a{:href => "#"}

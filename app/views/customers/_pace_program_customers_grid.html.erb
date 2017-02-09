@@ -1,0 +1,15 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@pace_program_customers_grid) do |g|
+
+  g.column  name:  'Programa', attribute: 'name', assoc: :pace_program
+
+  g.column  name:  'Notas', attribute: 'note' do |pace_program_customers|
+    pace_program_customers.note
+  end
+
+  g.column   do |pace_program_customers|
+    link_to('Edit', edit_pace_program_customer_path(pace_program_customers))
+  end
+end -%>
+
+<%= link_to 'Nuevo Programa', new_pace_program_customer_path-%>

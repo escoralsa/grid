@@ -1,0 +1,18 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@documents_grid) do |g|
+
+
+  g.column name:  'Nombre', attribute: 'name'  do |document|
+    document.name
+  end
+
+  g.column   do |document|
+    link_to('Descargar', document.file_url)
+  end
+
+  g.column   do |document|
+    link_to('Edit', edit_document_path(document))
+  end
+end -%>
+
+<%= link_to 'New document', new_document_path-%>

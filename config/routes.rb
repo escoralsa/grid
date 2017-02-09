@@ -1,6 +1,13 @@
 # encoding: utf-8
 Examples::Application.routes.draw do
 
+  resources :documents
+  resources :documents
+  resources :pace_program_customers
+  resources :pace_programs
+  resources :linux_users
+  resources :contacts
+  resources :contacts
   resources :attacheds
   devise_for :users
   resources :appliances
@@ -16,6 +23,7 @@ Examples::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/new' => 'devise/registrations#new'
   end
+
 
   resources :users
   Wice.define_routes(self, 'queries')

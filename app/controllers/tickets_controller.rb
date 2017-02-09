@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+
   # GET /tickets
   def index
 
@@ -26,7 +27,7 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new    
+    @ticket = Ticket.new
   end
 
   # GET /tickets/1/edit
@@ -40,7 +41,6 @@ class TicketsController < ApplicationController
   def create
 
     @ticket = Ticket.new(ticket_params)
-    ActionCorreo.bienvenido_email(ticket_params).deliver
 
     if @ticket.save
       redirect_to tickets_path , notice: 'Ticket was successfully created.'
@@ -72,7 +72,7 @@ class TicketsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def ticket_params
-      params.require(:ticket).permit(:date, :contactName, :notes, :employee_id, :customer_id, :priority_id, :situation_id, :category_id, :user_id, :image)
+      params.require(:ticket).permit(:id, :date, :contact_id, :notes, :employee_id, :customer_id, :priority_id, :situation_id, :category_id, :user_id, :image)
     end
-    
+
 end

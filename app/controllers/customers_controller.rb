@@ -21,6 +21,9 @@ class CustomersController < ApplicationController
   def edit
     @tickets_grid = initialize_grid(Ticket, name: 'ticket', order: 'id', :conditions => ['customer_id = ?', @customer])
     @appliances_grid = initialize_grid(Appliance, name: 'device',order: 'id', :conditions => ['customer_id = ?', @customer])
+    @contacts_grid = initialize_grid(Contact, name: 'contact',order: 'id', :conditions => ['customer_id = ?', @customer])
+    @linux_users_grid = initialize_grid(LinuxUser, name: 'linux_user',order: 'id', :conditions => ['customer_id = ?', @customer])
+    @pace_program_customers_grid = initialize_grid(PaceProgramCustomer, name: 'pace_program_customer',order: 'id', :conditions => ['customer_id = ?', @customer])
 
   end
 
@@ -58,6 +61,6 @@ class CustomersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def customer_params
-      params.require(:customer).permit(:name, :adress, :accnumber, :phone, :contact, :rfc, :email, :ip, :server, :datacenter, :vpacesetter, :vprogress, :userNumber, :catalog, :softwareC, :programesp, :emailpdf, :emailxml, :pdf)
+      params.require(:customer).permit(:name, :adress, :accnumber, :phone, :contact, :rfc, :email, :ip, :server, :datacenter, :dataCenterLocation, :vpacesetter, :vprogress, :userNumber, :catalog, :softwareC, :link, :programesp, :emailpdf, :emailxml, :pdf)
     end
 end

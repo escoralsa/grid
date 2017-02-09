@@ -1,0 +1,22 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@contacts_grid) do |g|
+
+  g.column name:  'Nombre', attribute: 'name'  do |contact|
+    contact.name
+  end
+
+  g.column  name:  'Telefono', attribute: 'phone' do |contact|
+    contact.phone
+  end
+
+  g.column  name:  'Correo', attribute: 'email' do |contact|
+    contact.email
+  end
+
+  g.column   do |contact|
+    link_to('Edit', edit_contact_path(contact))
+  end
+
+end -%>
+
+<%= link_to 'Nuevo Contacto', new_contact_path-%>

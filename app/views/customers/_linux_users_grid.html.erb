@@ -1,0 +1,18 @@
+<%# show_filters: :when_filtered %>
+<%= grid(@linux_users_grid) do |g|
+
+
+  g.column name:  'Usuario', attribute: 'user'  do |linux_user|
+    linux_user.user
+  end
+
+  g.column  name:  'Password', attribute: 'password' do |linux_user|
+    linux_user.password
+  end
+
+  g.column   do |linux_user|
+    link_to('Edit', edit_linux_user_path(linux_user))
+  end
+end -%>
+
+<%= link_to 'New linux_user', new_linux_user_path-%>
