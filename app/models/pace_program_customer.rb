@@ -1,0 +1,4 @@
+class PaceProgramCustomer < ActiveRecord::Base
+  belongs_to :customer
+  belongs_to :pace_program
+end

@@ -1,0 +1,29 @@
+<%= form_for(@pace_program_customer) do |f| %>
+  <% if @pace_program_customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pace_program_customer.errors.count, "error") %> prohibited this pace_program_customer from being saved:</h2>
+
+      <ul>
+      <% @pace_program_customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :full_name),{}, {:class => "form-control"} )%><br>
+  </div>
+  <div class="field">
+    <%= f.label :paceProgram_id %><br>
+    <%= f.select(:paceProgram_id, options_from_collection_for_select(PaceProgram.all, :id, :name),{}, {:class => "form-control"} )%><br>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

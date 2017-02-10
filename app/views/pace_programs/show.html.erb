@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pace_program.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pace_program.description %>
+</p>
+
+<%= link_to 'Edit', edit_pace_program_path(@pace_program) %> |
+<%= link_to 'Back', pace_programs_path %>

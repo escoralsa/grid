@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @pace_program_customer.customer %>
+</p>
+
+<p>
+  <strong>Paceprogram:</strong>
+  <%= @pace_program_customer.paceProgram %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @pace_program_customer.note %>
+</p>
+
+<%= link_to 'Edit', edit_pace_program_customer_path(@pace_program_customer) %> |
+<%= link_to 'Back', pace_program_customers_path %>
