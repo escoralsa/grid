@@ -80,27 +80,29 @@ ActiveRecord::Schema.define(version: 20170208223919) do
   add_index "contacts", ["customer_id"], name: "index_contacts_on_customer_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "adress",      limit: 65535
-    t.string   "phone",       limit: 255
-    t.string   "contact",     limit: 255
-    t.string   "rfc",         limit: 255
-    t.string   "email",       limit: 255
-    t.string   "ip",          limit: 255
-    t.text     "server",      limit: 65535
+    t.string   "name",               limit: 255
+    t.text     "adress",             limit: 65535
+    t.string   "phone",              limit: 255
+    t.string   "contact",            limit: 255
+    t.string   "rfc",                limit: 255
+    t.string   "email",              limit: 255
+    t.string   "ip",                 limit: 255
+    t.text     "server",             limit: 65535
     t.boolean  "datacenter"
-    t.string   "vpacesetter", limit: 255
-    t.string   "vprogress",   limit: 255
-    t.integer  "userNumber",  limit: 4
-    t.string   "catalog",     limit: 255
-    t.string   "softwareC",   limit: 255
-    t.text     "programesp",  limit: 65535
-    t.text     "emailpdf",    limit: 65535
-    t.text     "emailxml",    limit: 65535
+    t.string   "dataCenterLocation", limit: 45
+    t.string   "vpacesetter",        limit: 255
+    t.string   "vprogress",          limit: 255
+    t.integer  "userNumber",         limit: 4
+    t.string   "catalog",            limit: 255
+    t.string   "softwareC",          limit: 255
+    t.string   "link",               limit: 45
+    t.text     "programesp",         limit: 65535
+    t.text     "emailpdf",           limit: 65535
+    t.text     "emailxml",           limit: 65535
     t.boolean  "pdf"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "accnumber",   limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "accnumber",          limit: 4
   end
 
   create_table "devices", force: :cascade do |t|
