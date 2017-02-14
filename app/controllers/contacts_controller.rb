@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
+      @customer = params[:customer]
     @contact = Contact.new
   end
 

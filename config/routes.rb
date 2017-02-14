@@ -1,6 +1,7 @@
 # encoding: utf-8
 Examples::Application.routes.draw do
 
+  resources :solutions
   resources :documents
   resources :documents
   resources :pace_program_customers

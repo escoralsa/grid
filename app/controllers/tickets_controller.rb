@@ -19,6 +19,7 @@ class TicketsController < ApplicationController
                                   }
   )
 
+  #  @contacts = Contact.where("customer_id =  ? ", Customer.first.id)
 
   end
 
@@ -28,6 +29,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @e=1
   end
 
   # GET /tickets/1/edit

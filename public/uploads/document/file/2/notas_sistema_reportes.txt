@@ -1,0 +1,40 @@
+ip string
+servidor text administrador/root credenciales
+Data center si/no
+version pacetter clasic
+version progress
+cantidad de usuarios
+catalogo
+software de conexion (netterm-accueterm)
+programaspersonalizados (tipo texto)
+correopdf;passwordcorreopdf
+correoxml;passwordcorreoxml
+almacenapdf (si/no) 
+
+
+rails generate scaffold cliente nombre:string direccion:text telefono:string contacto:string rfc:string correoe:string ip:string servidor:text datacenter:boolean vpacesetter:string vprogress:string numUsuarios:integer catalogo:string softwareC:string programasp:textcorreopdf:text correoxml:text pdf:boolean
+
+
+
+
+CATEGORIAS
+REDES/SO
+USABILIDAD
+PROGRAMACION
+
+rails generate scaffold dispositivo idcliente:integer numTienda:integer nombre:string ipInt:string ipExt:string marca:string modelo:string usuario:string password:string
+
+dispositivos
+id
+CLIENTE
+TIENDA
+nombre
+IP:PUERTOinterna
+ip externa
+marca
+modelo
+usuario
+password
+
+
+Programas especiales/personalizados

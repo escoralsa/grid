@@ -15,7 +15,7 @@
       = f.label :customer_id
       = f.collection_select :customer_id, Customer.order(:name),:id, :name, {:prompt => 'Select'}, {:class => "form-control"}
     .col-sm-9
-      = f.label :contact_id
+      = f.label 'PRueba'
       = f.grouped_collection_select :contact_id, Customer.order(:name), :contacts, :name, :id, :name, {:prompt => 'Select'}, {:class => "form-control"}
     .col-sm-9
       = f.label :contactName

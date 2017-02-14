@@ -34,10 +34,7 @@
                   = f.label :customer_id
                   = f.select(:customer_id, options_from_collection_for_select(Customer.all, :id, :full_name, @ticket.customer_id),{}, {:class => "form-control"} )
                 .col-sm-9
-                  = f.label :Contacto
-                  = f.text_field :contactName, :value => @ticket.contactName, :class => "form-control"
-                .col-sm-9
-                  = f.label :contact_id
+                  = f.label "Contacto"
                   = f.select(:contact_id, options_from_collection_for_select(Contact.all, :id, :name, @ticket.contact_id),{}, {:class => "form-control"} )
                 .col-sm-9
                   = f.label :notes
